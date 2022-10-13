@@ -51,7 +51,9 @@ function getFileEnv(envVariable) {
       return file.toString().split(/\r?\n/)[0].trim();
     }
   }
-  return origVar;
+  // avoid return undefined
+  if (origVar) return origVar;
+  return '';
 }
 
 const meConfigMongodbServer = process.env.ME_CONFIG_MONGODB_SERVER
